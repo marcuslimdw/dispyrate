@@ -17,6 +17,28 @@ if hasattr(sys, 'ps1'):
 
 # noinspection PyPep8Naming
 def D(mapping: Mapping[str, V]) -> Iterable[V]:
+    """
+    Destructures a mapping into an iterable of values corresponding to the targets of assignment in the same order,
+    akin to JS-style object destructuring.
+
+    Parameters
+    ----------
+    mapping: The mapping to destructure.
+
+    Returns
+    -------
+    An iterable of values ordered such that the key associated with each value in the original mapping will correspond
+    to the name it is to be assigned to.
+
+    Examples
+    --------
+    >>> data = {'username': 'gmgmgm', 'status': 'active', 'date_joined': '2020-10-22', 'level': 6}
+    >>> status, level = D(data)
+    >>> print(status)
+    active
+    >>> print(level)
+    6
+    """
     calling_code = get_calling_code()
     unpack, loads = split_instructions(calling_code)
     unpack_index = get_unpack_index(unpack) if unpack is not None else None
