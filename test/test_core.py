@@ -24,6 +24,12 @@ def test_D_multiple_starred():
     assert (a, b, c) == (1, [4, 2], 3)
 
 
+def test_D_multiple_complex():
+    a, *b = [1, 2, 3]
+    d, b, a, c = D({'e': 5, 'd': 4, 'c': 3, 'b': 2, 'a': 1})
+    assert (a, b, c, d) == (1, 2, 3, 4)
+
+
 def test_D_missing():
     with pytest.raises(DestructuringError):
         a, b = D({'c': 3, 'a': 1})
